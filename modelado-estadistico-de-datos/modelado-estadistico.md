@@ -120,7 +120,7 @@ El problema es que no conocemos la distribución de probabilidad.
 Es una técnica en la que se estima, fijado un natural $K$:
 
 $$
-  P[Y=j | X=x_0]=\frac1K \Sum I(y_i=j) I(i is among K-NeNe)
+  P[Y=j | X=x_0]=\frac1K \sum I(y_i=j) I(i \in KNN)
 $$
 
-Es decir, para predecir una clase, mira a los $K$ vecinos más cercanos y promedia.
+Es decir, para predecir una clase, mira a los $K$ vecinos más cercanos (el conjunto $KNN$) y promedia.
