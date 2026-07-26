@@ -29,24 +29,25 @@ $$
 a este valor se le llama error estándar (SE) y puede calcularse para los estimadores del modelo lineal ($p=1$):
 
 $$
-    SE(\beta_0)^2 = \frac{\sigma^2}n + \frac{\sigma^2\bar x}{\sum (x_i-\bar x) ^2}
+    SE(\beta_0)^2 = \frac{\sigma^2}n + \frac{\sigma^2\bar x^2}{\sum (x_i-\bar x) ^2}
 $$
 
 $$
-    SE(\beta_1)^2 = \frac{\sigma^2}{\sum (x_i-\bar x) ^2}
+    SE(\beta_1)^2 = \frac{\sigma^2}{\sum (x_{i}-\bar x) ^2}
 $$
+
 
 donde $\sigma^2=Var(\varepsilon)$. Se supone que los errores para cada observación tienen varianza común y no están correlados.
 
 $\sigma$, el llamado error residual estándar, puede estimarse con:
 
 $$
-    \sqrt\frac{RSS}{n-p-1}
+    \sqrt\frac{RSS}{n-p-1}=\sqrt\frac1{n-p-1}\sum(y_i-\hat y_i)^2
 $$
 
 donde $RSS$ es el error suma se cuadrados.
 
-Los intervalos de confianza al 95% para un parámetro se calculan como ($p=1$):
+Los intervalos de confianza al 95% para un parámetro se calculan como ($p=1$, $n$ grande para aproximar $t$ con una normal y esta por el número 2):
 
 $$
     \hat\beta_i\pm 2SE(\hat\beta_i)
