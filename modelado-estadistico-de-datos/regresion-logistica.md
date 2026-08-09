@@ -1,6 +1,6 @@
 # Regresión Logística
 
-El modelo lineal asume que la variable de respuesta es cuantitativa. La regresión logística permite modelar respuestas cuantitativas.
+El modelo lineal asume que la variable de respuesta es cuantitativa. La regresión logística permite modelar respuestas cualitativas.
 
 ## Modelo
 
@@ -12,7 +12,7 @@ f(Y|X) = \prod_{k=1}^K p_k^{I(Y=k)}
 \left(1-\sum_{j=1}^{K-1} p_j\right)^{1-\sum I(Y=k)}
 $$
 
-con $p_k=P[Y=k|X]$ para $k\in\{1..K\}$. Se usa que la probabilidad siempre suma 1 y que la en una multinomial siempre se da que $I(Y=k)=0$ para todo $k$ salvo para un cierto $k'$ que $I(Y=K)=1$.
+con $p_k=P[Y=k|X]$ para $k\in\{1..K\}$. Se usa que la probabilidad siempre suma 1 y que la en una multinomial siempre se da que $I(Y=k)=0$ para todo $k$ salvo para un cierto $k'$ que $I(Y=k')=1$.
 
 Se trata de una familia exponencial que se puede expresar como:
 
@@ -36,7 +36,7 @@ f(y|X)
     \right)
 $$
 
-es decir, la distribución pertenece a una familia exponencial. Siguiendo el modelo lineal generalizado (no confundir con el modelo lineal general):
+es decir, la distribución pertenece a una familia exponencial. Siguiendo el modelo lineal generalizado (no confundir con el modelo lineal general), que siempre es aplicable en el caso de la familia exponencial, tenemos la regresión lineal:
 
 $$
 \log \frac{p_k}{1-\sum_{j=1}^{K-1} p_j}
@@ -119,6 +119,20 @@ $$
 
 con $k\in\{1..K\}$.
 
+### Estimación de los parámetros
+
+La estimación se hace maximizando la función de verosimilitud:
+
+$$
+\ell(\overrightarrow{\beta}_1,\ldots,\overrightarrow{\beta}_{K-1})
+= \prod_{k=1}^{K-1} p_k^{I(Y=k)}
+\left(1-\sum_{j=1}^{K-1} p_j\right)^{1-\sum I(Y=k)}
+$$
+
+donde $p_k$ son los anteriores pero vistos como funciones de los $\overrightarrow{\beta}_k$ y $\overrightarrow{\beta}_K=\overrightarrow{0}$.
+
+Normalmente ha de resolverse con métodos numéricos.
+
 ## Interpretación de los coeficientes
 
 Como
@@ -127,18 +141,18 @@ $$
 \log\frac{p_k}{p_K}=\exp\overrightarrow{\beta_k}\cdot\overrightarrow{x}
 $$
 
-Se puede interpretar que un cambio de una unidad de $\overrightarrow{x}_i$ corresponde a $\beta_{k,i}$ unidades de cambio en el logaritmo de la razón de oportunidades (_log-odds_) de $Y=k$ respecto a la categoría de referencia (_baseline_) $Y=K$.
+Se puede interpretar que un cambio de una unidad de ${x}_i$ corresponde a $\beta_{k,i}$ unidades de cambio en el logaritmo de la razón de oportunidades (_log-odds_) de $Y=k$ respecto a la categoría de referencia (_baseline_) $Y=K$.
 
 ### Razón de oportunidades
 
-Dados eventos $A_{i}$ ($i\in\{1..n\}$) una partición de eventos exhaustiva (es decir, $\sum P[A_i]=1$) y en la que $\prod P[A_i]\neq 0$, para cualquier $M>0$
+Dados eventos $A_{i}$ ($i\in\{1..n\}$) una partición de eventos exhaustiva y mutuamente excluyentes (es decir, $\sum P[A_i]=1$) y en la que $\prod P[A_i]\neq 0$, para cualquier $M>0$
 se define:
 
 $$
     O(A_i)=M\, P[A_i]
 $$
 
-(es decir, se define salvo un factor de proporcionalidad). En particular las expresiones:
+(es decir, se define salvo un factor de proporcionalidad común a todos los eventos). En particular las expresiones:
 
 $$
 \frac{P[A_i]}{P[A_n]}:\ldots:\frac{P[A_{n-1}]}{P[A_n]}:1
@@ -168,17 +182,17 @@ como la clase a la que pertenecen todas las expresiones anteriores.
 
 Algunas consideraciones:
 
-- La razón de oportunidades está definida salvo una constante. Es decir, para cualquier $M>0$ se tiene que $M\, O(A_1):\cdots :M\, O(A_n)$, por definición.
+- La razón de oportunidades está definida salvo una constante. Es decir, para cualquier $M>0$ se tiene que $M\, O(A_1):\cdots :M\, O(A_n)=O(A_1):\cdots:O(A_n)$, por definición.
 - En la literatura existen varias traducciones para _odds ratio_: razón de probabilidades, razón relativa, razón de oportunidades, razón de posibilidades, razón de momios, razón de productos cruzados, razón de desigualdades, razón de disparidad, razón de exceso, oportunidad relativa, disparidad, desigualdad relativa, relación impar...
 - Cuando los eventos son dos, las condiciones anteriores equivalen a que ambos eventos son complementarios, es decir, $A$ y $B$ con $P[B]=1-P[A]$. En ese caso en la literatura angloparlante se denomina habitualmente a $O(A):O(B)$ como las _odds_ del evento $A$. En estos apuntes se le denominará la razón de oportunidades de $A$, sin hacer referencia a su complementario, pero sin darle una expresión particular.
-- Como ejemplo, tirar un dado y que salga un múltiplo de 3 (es decir, que salga 3 o 6) tiene una probabilidad de $2/6$ o equivalentemente $1/3$. Ahora, la razón de oportunidades de que salga un múltiplo de 3 frente a que no sería $a:b=(1/3):(2/3)$. Se puede elegir $a=1/3$ y $b=2/3$, sí, pero también se puede elegir $a=1$ y $b=2$ con lo que se obtiene $1:2$. Léase una oportunidad 1 a 2 (que salga 3 o 6 frente a 1, 2, 4 o 5, hay el doble de oportunidades). Pero también se tiene que se puede expresar $2:4$, que coincide con la razón de los casos favorables entre desfavorables.
+- Como ejemplo, tirar un dado y que salga un múltiplo de 3 (es decir, que salga 3 o 6) tiene una probabilidad de $2/6$ o equivalentemente $1/3$. Ahora, la razón de oportunidades de que salga un múltiplo de 3 frente a que no sería $a:b=(1/3):(2/3)$. Pero también se puede elegir $a=1$ y $b=2$ con lo que se obtiene $1:2$. Léase una oportunidad 1 a 2 (que salga un múltiplo de 3 -3 o 6- frente a 1, 2, 4 o 5, hay el doble de oportunidades). Pero también se puede expresar como $2:4$, que coincide con la razón de los casos favorables entre desfavorables.
 - Es decir, si según la ley de Lagrange la probabilidad de A se interpreta como casos favorables entre casos posibles de que un evento ocurra, la razón de oportunidades de A se interpreta como los casos favorables entre los casos desfavorables.
-- Para un ejemplo en el caso de más de dos eventos, supongamos que estamos probando un software para calificar alumnos y necesitamos generar datos para ponerlo a prueba. Para ello generamos, de forma uniforme, notas enteras entre 0 y 10, tenemos el ejemplo de sacar una nota en un examen en menor que 5 (0, 1, 2, 3, 4, probabilidad 5/11), mayor que 8 (9 o 10, con lo que 2/11) frente a que esté entre ambos (5, 6, 7, 8, es decir 4/11). En ese caso, $a:b:c=((5/11)/(4/11),(2/11)/(4/11))=(5/4,2/4)$, que resumidamente se puede expresar como $5:2:4$.
-- En este caso se puede interpretar también que cada $O(A_j)$ representa los casos favorables a que suceda $A_j$ frente a los casos desfavorables $O(A_i)$ para $i\neq j$.
-- Si se escoge un $A_j$ y se toma como representante:
-  $$
+- Para un ejemplo en el caso de más de dos eventos, supongamos que estamos probando un software para calificar alumnos y necesitamos generar datos para ponerlo a prueba. Para ello generamos, de forma uniforme, notas enteras entre 0 y 10. Se propone el ejemplo de sacar una nota en un examen menor que 5 (0, 1, 2, 3, 4, probabilidad 5/11), mayor que 8 (9 o 10, probabilidad 2/11) frente a que esté entre ambos (5, 6, 7, 8, probabilidad 4/11). En ese caso, $a:b:c$ que calculándolas esta vez como razones de probabilidades (simplemente por ver otro método) equivale a $(5/11)/(4/11):(2/11)/(4/11):1=5/4:2/4:1$, que resumidamente se puede expresar como $5:2:4$.
+- En este caso se puede interpretar también que cada $O(A_j)$ representa los casos favorables a que suceda $A_j$ frente a los casos desfavorables $O(A_i)$ para $i\neq j$. En el ejemplo anterior, la interpretación de $5:2:4$ es que sacar menos de un 5 tiene 5 casos favorables frente a los $2+4=6$ casos desfavorables. Igualmente, sacar más de un 8 tiene 2 casos favorables frente a los $5+4=9$ casos desfavorables.
+- Si se escoge un $A_j$ y se toma como representante de
+  $
   O(A_1):\cdots:O(A_j):\cdots:O(A_n)
-  $$
+  $ a la expresión:
   $$
   \frac{P[A_1]}{P[A_j]}:\cdots:1:\cdots:
   \frac{P[A_n]}{P[A_j]}
@@ -188,10 +202,11 @@ Algunas consideraciones:
   \frac{P[A_1]}{P[A_j]}:\cdots:
   \frac{P[A_n]}{P[A_j]}
   $$
-- El caso anterior si se toma logaritmos:
+  muchas veces se toma $j=n$.
+- En el caso anterior si se toma logaritmos:
   $$
   \log\frac{P[A_1]}{P[A_j]}:\cdots:
   \log\frac{P[A_n]}{P[A_j]}
   $$
   se le denomina logaritmo de la razón de oportunidades, y es lo que se usa para interpretar los coeficientes de la regresión logística.
-- Por último, puede verse la expresión $O(A_1):\cdots:O(A_n)$ como las coordenadas homogéneas de un punto en el espacio proyectivo real $PR^{n-1}$. Por las condiciones impuestas, ninguno de estos puntos pertenece al hiperplano en el infinito. De hecho es un subconjunto un poco extraño porque ninguna o todas sus coordenadas tienen que ser extrictamente positivas (es decir, si vemos el espacio proyectivo como puntos antipodales en una hiperesfera y esta como subconjunto de un espacio euclídeo de una dimensión superior, uno de los puntos siempre vive en el primer 2-n-ante - cuadrante, octante...- del espacio ambiente). No tiene más interés que justificar la notación con los :, que es la misma que se usa para coordenadas homogéneas.
+- Por último, puede verse la expresión $O(A_1):\cdots:O(A_n)$ como las coordenadas homogéneas de un punto en el espacio proyectivo real $PR^{n-1}$. Por las condiciones impuestas, ninguno de estos puntos pertenece al hiperplano en el infinito. De hecho es un subconjunto un poco extraño porque ninguna o todas sus coordenadas tienen que ser estrictamente positivas (es decir, si vemos el espacio proyectivo como puntos antipodales en una hiperesfera y esta como subconjunto de un espacio euclídeo de una dimensión superior, uno de los puntos siempre vive en el primer $2^n$-ante - cuadrante, octante...- del espacio ambiente). No tiene más interés que justificar la notación con los :, que es la misma que se usa para coordenadas homogéneas.
