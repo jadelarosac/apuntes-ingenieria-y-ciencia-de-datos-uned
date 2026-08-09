@@ -230,3 +230,15 @@ $$
 donde $R^2_{X_j|X_{\bar j}}$ es el $R^2$ resultado del ajuste de $X_j$ sobre el resto de predictores. Cuando es grande, cercano a uno, indica colinearidad y el VIF será grande (se suelen tomar valores de 5 o 10 como umbral a partir del cual se determina que hay colinealidad).
 
 Se puede eliminar una de las variables involucradas en la colinearidad o combinarlas en un único predictor.
+
+## Modelo lineal generalizado
+
+Cuando $Y$ en lugar de seguir una distribución gaussiana sigue otro tipo de distribuciones que se modelan con otro tipo de método (multinomial con la regresión logística, distribución de Poisson con regresión de Poisson...).
+
+En cada uno de esos casos, se aplica regresión lineal sobre la esperanza de la variable aleatoria $E(Y|\overrightarrow{X})$ transformada mediante una función de enlace $\eta$ (_link function_).
+
+$$
+    \eta(E(Y|\overrightarrow{X})) = \overrightarrow\beta\cdot\overrightarrow{X}
+$$
+
+La estimación de los coeficientes se hace por el método de máxima verosimilitud (que en el caso de la regresión lineal usual corresponde al método de mínimos cuadrados) o por métodos bayesianos. Otra diferencia es que suele ser necesario el uso de métodos numéricos para determinar estimaciones de los valores de $\overrightarrow{\beta}$.
