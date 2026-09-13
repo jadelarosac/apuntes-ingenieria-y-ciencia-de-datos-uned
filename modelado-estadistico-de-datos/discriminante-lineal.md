@@ -18,7 +18,7 @@ Si
 
 $$
 	f_k(x) = \frac1{\sqrt{\det(2\pi\Sigma)}}
-	\exp\left(-\frac12(x-\mu)^T\Sigma^{-1}(x-\mu)\right)
+	\exp\left(-\frac12(x-\mu_k)^T\Sigma^{-1}(x-\mu_k)\right)
 $$
 
 es decir, $\overrightarrow{X}=(X_1..X_p)$  y cada $X_i$ sigue una distribución normal (pero todos con la misma matriz de varianzas) $X_k\sim\mathcal{N}(\mu_k,\Sigma)$ entonces el discriminante
@@ -63,4 +63,28 @@ que corresponde a un hiperplano representado con su ecuación implícita. Es dec
 
 ## Curvas de nivel
 
-Las curvas de nivel vuelven a ser hiperelipsoides, como en el caso de [[discriminante-cuadratico#Curvas de nivel]], solo que todos los ellos tienen la misma excentricidad y los ejes alineados.
+Las curvas de nivel vuelven a ser hiperelipsoides, como en el caso de [[discriminante-cuadratico#Curvas de nivel]], solo que todos los ellos tienen la misma excentricidad y los ejes alineados. Lo único que cambian son los centros de cada uno de ellos, $\mu_k$. 
+
+## Reducción de la dimensión y representación
+
+Siguiendo el análisis de [[distancia-Mahalanobis]], podemos hacer la siguiente observación:
+
+$$
+	\delta_k(x) = -\frac12D_\Sigma(x,\mu_k)^2+\log\pi_k
+$$
+
+entonces
+
+$$
+	\arg\max g_x(k) = 
+	\arg\max\left(
+		-\frac12D_\Sigma(x,\mu_k)^2+\log\pi_k
+	\right) = 
+	\arg\min\left(
+		D_\Sigma(x,\mu_k)^2-2\log\pi_k
+	\right)
+$$
+
+donde al multiplicar por un número negativo como $-2$ cambiamos la búsqueda de un máximo por un mínimo.
+
+En el caso en el que los $\pi_i$ sean todos iguales (es decir todas las clases tengan las mismas observaciones) el modelo es equivalente $D_\Sigma(x,\mu_k)^2$, lo que corresponde al [[NCC]].
