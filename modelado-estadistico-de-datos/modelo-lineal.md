@@ -49,7 +49,7 @@ donde el VIF se explicará en la sección de multicolinearidad.
 $\sigma$, el llamado error residual estándar, puede estimarse con:
 
 $$
-    \sqrt\frac{RSS}{n-p-1}=\sqrt\frac1{n-p-1}\sum(y_i-\hat y_i)^2
+    RSE=\sqrt{\frac1{n-p-1}RSS}=\sqrt{\frac1{n-p-1}\sum(y_i-\hat y_i)^2}
 $$
 
 donde $RSS$ es el error suma se cuadrados.
@@ -70,13 +70,7 @@ sigue la distribución T de Student con $n-2$ grados de libertad ($p=1$). El $p$
 
 ## Precisión del modelo
 
-Tenemos el error residual estándar:
-
-$$
-    RSE=\sqrt{\frac1{n-p-1}RSS}=\sqrt{\frac1{n-p-1}\sum(y_i-\hat y_i)^2}
-$$
-
-Nos dá un error cuantitativo y en las mismas dimensiones que la estimación.
+Tenemos el error residual estándar nos da un error cuantitativo y en las mismas dimensiones que la estimación.
 
 Para comparaciones proporcionales tenemos $R^2$:
 
