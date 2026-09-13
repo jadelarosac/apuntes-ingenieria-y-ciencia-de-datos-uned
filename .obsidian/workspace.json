@@ -85,19 +85,9 @@
                   "title": "KNN"
                 },
                 "group": "7fa672d96239bf3c"
-              },
-              {
-                "id": "e30e8139b14b0c3e",
-                "type": "leaf",
-                "state": {
-                  "type": "empty",
-                  "state": {},
-                  "icon": "lucide-file",
-                  "title": "New tab"
-                }
               }
             ],
-            "currentTab": 5
+            "currentTab": 1
           },
           {
             "id": "d87da7a01a207227",
@@ -179,7 +169,7 @@
                 "group": "7fa672d96239bf3c"
               }
             ],
-            "currentTab": 4
+            "currentTab": 1
           }
         ],
         "direction": "horizontal"
@@ -244,8 +234,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "6688e950a7feffa1",
@@ -261,6 +250,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "modelado-estadistico-de-datos/discriminante-lineal.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -322,6 +312,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "modelado-estadistico-de-datos/discriminante-lineal.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -335,7 +326,9 @@
             "type": "leaf",
             "state": {
               "type": "footnotes",
-              "state": {},
+              "state": {
+                "file": "modelado-estadistico-de-datos/discriminante-lineal.md"
+              },
               "icon": "lucide-file-signature",
               "title": "Footnotes"
             }
@@ -367,10 +360,11 @@
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
       "workspaces:Manage workspace layouts": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "omnisearch:Omnisearch": false
     }
   },
-  "active": "e30e8139b14b0c3e",
+  "active": "2000337e9253b7ca",
   "lastOpenFiles": [
     "modelado-estadistico-de-datos/KNN.md",
     "modelado-estadistico-de-datos/NCC.md",

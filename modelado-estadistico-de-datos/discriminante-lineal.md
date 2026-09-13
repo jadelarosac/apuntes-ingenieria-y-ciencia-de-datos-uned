@@ -87,4 +87,4 @@ $$
 
 donde al multiplicar por un número negativo como $-2$ cambiamos la búsqueda de un máximo por un mínimo.
 
-En el caso en el que los $\pi_i$ sean todos iguales (es decir todas las clases tengan las mismas observaciones) el modelo es equivalente $D_\Sigma(x,\mu_k)^2$, lo que corresponde al [[NCC]].
+En el caso en el que los $\pi_i$ sean todos iguales (es decir todas las clases tengan las mismas observaciones) el modelo es equivalente $D_\Sigma(x,\mu_k)^2$, lo que corresponde al [[NCC]] (clasificador del centroide más cercano).
