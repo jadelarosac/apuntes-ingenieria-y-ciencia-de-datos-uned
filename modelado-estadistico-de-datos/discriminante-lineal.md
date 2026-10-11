@@ -88,3 +88,7 @@ $$
 donde al multiplicar por un número negativo como $-2$ cambiamos la búsqueda de un máximo por un mínimo.
 
 En el caso en el que los $\pi_i$ sean todos iguales (es decir todas las clases tengan las mismas observaciones) el modelo es equivalente $D_\Sigma(x,\mu_k)^2$, lo que corresponde al [[NCC]] (clasificador del centroide más cercano).
+
+Se pueden aplicar entonces técnicas de reducción de dimensionalidad al espacio transformado (como [[PLS]], [[PCA]]...) con diversos objetivos, entre ellos para representar las dimensiones más significativas para el problema de clasificación.
+
+En el caso concreto de la representación gráfica, se toman las dos primeras dimensiones, en otras palabras, las dos más significativas.
