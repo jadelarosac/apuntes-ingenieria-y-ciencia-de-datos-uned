@@ -8,12 +8,12 @@ Ejemplo: _"La UNED es la mayor universidad de España, con más de 250.000 estud
 
 - Relaciones de la tarea de extracción de relaciones de **ACE** ([ACE 2005](https://catalog.ldc.upenn.edu/LDC2006T06)):
 
-  | Relación | Tipos | Ejemplo |
-  | --- | --- | --- |
-  | Physical-Located | PER–GPE | _He was in Tennessee_ |
-  | Part-Whole-Subsidiary | ORG–ORG | _XYZ, the parent company of ABC_ |
-  | Person-Social-Family | PER–PER | _Yoko's husband John_ |
-  | Org-AFF-Founder | PER–ORG | _Steve Jobs, co-founder of Apple_ |
+| Relación              | Tipos   | Ejemplo                           |
+| --------------------- | ------- | --------------------------------- |
+| Physical-Located      | PER–GPE | _He was in Tennessee_             |
+| Part-Whole-Subsidiary | ORG–ORG | _XYZ, the parent company of ABC_  |
+| Person-Social-Family  | PER–PER | _Yoko's husband John_             |
+| Org-AFF-Founder       | PER–ORG | _Steve Jobs, co-founder of Apple_ |
 
 - Dominio biomédico: [UMLS](https://www.nlm.nih.gov/research/umls/index.html) (_Unified Medical Language System_, de la Biblioteca Nacional de Medicina de EE. UU.) define 134 tipos de entidad y 54 relaciones: _Injury_ **disrupts** _Physiological Function_, _Pharmacologic Substance_ **treats** / **causes** _Pathologic Function_, etc.
 - Otras fuentes de relaciones: las **infoboxes** de Wikipedia (Stanford: `state = California`), que pueden pasarse a tripletas [RDF](https://www.w3.org/RDF/) (entidad–relación–entidad), y ontologías como WordNet (relación _is-a_, ver [[desambiguacion-del-sentido#Relaciones entre sentidos]]).
