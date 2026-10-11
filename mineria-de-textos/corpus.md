@@ -22,11 +22,11 @@ Un **corpus** es una compilación de textos en formato electrónico. Es el recur
   `The/AT Fulton/NP County/NP Grand/NP Jury/NP said/VBD Friday/NR ...`
 - **SUSANNE** ([grsampson.net](http://www.grsampson.net/Resources.html)): 130.000 palabras, 64 archivos del Brown, con categorías léxicas, lema y análisis sintáctico. Una línea por palabra:
 
-  | ref.        | cat.  | palabra   | lema     | análisis      |
-  | ----------- | ----- | --------- | -------- | ------------- |
-  | N06:0180.12 | NN1u  | Baldness  | baldness | [S[Ns:s.Ns:s] |
-  | N06:0180.15 | VBDZ  | was       | be       | [Vsu.         |
-  | N06:0180.18 | VVGt  | attacking | attack   | .Vsu]         |
+| ref.        | cat. | palabra   | lema     | análisis      |
+| ----------- | ---- | --------- | -------- | ------------- |
+| N06:0180.12 | NN1u | Baldness  | baldness | [S[Ns:s.Ns:s] |
+| N06:0180.15 | VBDZ | was       | be       | [Vsu.         |
+| N06:0180.18 | VVGt | attacking | attack   | .Vsu]         |
 
 - **CESS-ESP**: corpus en español con etiquetas POS, disponible en NLTK (ver [[pos-tagging#Español con NLTK]]).
 - **Europarl** ([statmt.org/europarl](https://www.statmt.org/europarl/)): actas del Parlamento Europeo en 21 lenguas, alineadas por oración (paralelo). [Koehn, 2005](https://aclanthology.org/2005.mtsummit-papers.11/).
